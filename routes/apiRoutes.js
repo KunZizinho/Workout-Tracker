@@ -3,7 +3,7 @@ const Workout = require("../models/workOut");
 
 module.exports = function (app) {
 
-    app.get("/api/workout", function(req, res){
+    app.get("/api/workouts", function(req, res){
         Workout.find().then(data =>{
             console.log("linija 8 data", data)
             res.json(data);
@@ -13,7 +13,7 @@ module.exports = function (app) {
         });
     });
 
-    app.post("/api/workout", function(req, res){
+    app.post("/api/workouts", function(req, res){
         Workout.create({}).then(data => {
             console.log("linija 18 data", data)
             res.json(data)
@@ -23,7 +23,7 @@ module.exports = function (app) {
         })
     });
 
-    app.put("/api/workout/:id", ({body, params}, res) =>{
+    app.put("/api/workouts/:id", ({body, params}, res) =>{
         Workout.findByIdAndUpdate(
             params.id,
             {$push: {exercises: body}},
