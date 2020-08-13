@@ -37,4 +37,14 @@ module.exports = function (app) {
             res.json(err);
         })
     })
+
+    app.get("/api/workouts/range", (req, res) => {
+        Workout.find({})
+            .then(workouts => {
+                res.json(workouts)
+            })
+            .catch(err =>{
+                res.json(err)
+            });
+    })
 };
