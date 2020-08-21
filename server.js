@@ -4,7 +4,7 @@ const path = require("path");
 const express = require("express");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
-const mongo = require("mongo")
+const mongo = require("mongo");
 
 
 // Setting up Express App
@@ -19,7 +19,7 @@ app.use(express.json());
 app.use(express.static('public'));
 
 // setting up mongo db
-mongoDB_uri = process.env.mongoDB_uri || "mongodb://localhost/workout";
+mongo = process.env.mongoDB_uri || "mongodb://localhost/workout";
 mongoose.connect(mongoDB_uri, {
     useNewUrlParser: true,
     useFindAndModify: false
