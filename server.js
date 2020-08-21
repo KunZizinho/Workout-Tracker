@@ -18,10 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('public'));
 // setting up mongo db
-mongoose.connect(process.env.mongoDB_uri || "mongodb://localhost/workout",{
-    useNewUrlParser: true,
-    useFindAndModify: false
-});
+const mongoDB_uri = process.env.mongoDB_uri || "mongodb://localhost/workout";
 
 mongoose.connect(mongoDB_uri, {
     useNewUrlParser: true,
