@@ -18,10 +18,9 @@ app.use(express.json());
 app.use(express.static('public'));
 
 // setting up mongo db
-var mongoDB_uri = process.env.mongoDB_uri || "mongodb://localhost/workout";
-mongoose.connect(mongoDB_uri, {
-    useNewUrlParser: true,
-    useFindAndModify: false
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/Workout", {
+  useNewUrlParser: true,
+  useFindAndModify: false
 })
 
 //routes
