@@ -19,10 +19,15 @@ app.use(express.json());
 app.use(express.static('public'));
 
 // setting up mongo db
-mongoose.connect(process.env.mongoDB_uri || "mongodb://localhost/workout",{
-    useNewUrlParser: true,
-    useFindAndModify: false
-});
+// mongoose.connect(process.env.mongoDB_uri || "mongodb://localhost/workout",{
+//     useNewUrlParser: true,
+//     useFindAndModify: false
+// });
+if(process.env.MONGODB_URI){
+    mongoose.createConnection(process.env.MONGODB_URI);
+} else {
+    mongoose.connect("mongodb://localhost/workout");
+}
 // mongoose.connect(mongoDB_uri, {
 //     useNewUrlParser: true,
 //     useFindAndModify: false
